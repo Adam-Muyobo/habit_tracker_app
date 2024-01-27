@@ -1,17 +1,29 @@
 import 'package:flutter/material.dart';
 
-class EnterNewHabitBox extends StatelessWidget {
-  const EnterNewHabitBox({super.key});
+class MyAlertBox extends StatelessWidget {
+  final controller;
+  final String hintText;
+  final VoidCallback onSave;
+  final VoidCallback onCancel;
+  const MyAlertBox({
+    super.key,
+    required this.controller,
+    required this.onSave,
+    required this.onCancel,
+    required this.hintText,
+  });
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: Colors.grey,
       content: TextField(
+        controller: controller,
         style: const TextStyle(
           color: Colors.black54
         ),
         decoration: InputDecoration(
+          hintText: hintText,
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.black54),
             borderRadius: BorderRadius.circular(16),
@@ -24,7 +36,7 @@ class EnterNewHabitBox extends StatelessWidget {
       ),
       actions: [
         MaterialButton(
-          onPressed: (){},
+          onPressed: onSave,
           color: Colors.grey[400],
           elevation: 0,
           child: const Text(
@@ -35,7 +47,7 @@ class EnterNewHabitBox extends StatelessWidget {
           ),
         ),
         MaterialButton(
-          onPressed: (){},
+          onPressed: onCancel,
           color: Colors.grey[400],
           elevation: 0,
           child: const Text(
