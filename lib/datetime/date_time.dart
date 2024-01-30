@@ -19,4 +19,27 @@ String todaysDateFormated(){
   return yyyy + mm + dd;
 }
 // Convert String yyyymmdd to DateTime object
+DateTime createDateTimeObject(String yyyymmdd){
+  int yyyy = int.parse(yyyymmdd.substring(0,4));
+  int mm = int.parse(yyyymmdd.substring(4,6));
+  int dd = int.parse(yyyymmdd.substring(6,8));
+
+  return DateTime(yyyy, mm, dd);
+}
 // Convert DateTime object to string yyyymmdd
+String convertDateTimeToString (DateTime dateTime){
+  // Year format
+  String yyyy = dateTime.year.toString();
+  // Month format
+  String mm = dateTime.month.toString();
+  if(mm.length == 1){
+    mm = "0$mm";
+  }
+  // day format
+  String dd = dateTime.day.toString();
+  if(dd.length == 1){
+    dd = "0$dd";
+  }
+  // final format and r eturn date
+  return yyyy + mm + dd;
+}
